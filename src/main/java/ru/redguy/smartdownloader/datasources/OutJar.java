@@ -24,6 +24,9 @@ public class OutJar {
             try {
                 filesUnPackager = new FilesUnPackager(new File(dataPack),new File(pathToSave.toString()));
             } catch (FileNotFoundException e) {
+                System.out.println("File not found!");
+                System.exit(-1);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             if(print) System.out.println(new File(dataPack).getName());

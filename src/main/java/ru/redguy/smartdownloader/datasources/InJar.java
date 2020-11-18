@@ -21,7 +21,12 @@ public class InJar {
 
     public boolean unpack() {
         for (String dataPack : dataPacks) {
-            FilesUnPackager filesUnPackager = new FilesUnPackager(new BufferedInputStream(Main.class.getResourceAsStream("/"+dataPack)),pathToSave.toString());
+            FilesUnPackager filesUnPackager = null;
+            try {
+                filesUnPackager = new FilesUnPackager(new BufferedInputStream(Main.class.getResourceAsStream("/"+dataPack)),pathToSave.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if(print) System.out.println(new File(dataPack).getName());
             try {
                 filesUnPackager.unpack();

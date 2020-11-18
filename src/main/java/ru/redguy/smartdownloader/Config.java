@@ -15,6 +15,7 @@ public class Config {
 
     private JSONObject json;
 
+    //TODO: Unpack types: in this folder, with new folder, to selected folder(with/without deleting all from target folder)
     public Config() {
         try {
             InputStream inputStream = Main.class.getResourceAsStream("/config.json");
@@ -29,6 +30,8 @@ public class Config {
         switch (json.getInt("type")) {
             case 1:
                 return DataType.InJar;
+            case 2:
+                return DataType.OutJar;
         }
         return null;
     }
@@ -45,4 +48,8 @@ public class Config {
     public boolean getIsPrint() {
         return json.getBoolean("isPrint");
     }
+
+    public boolean getCreateDirectory() { return json.getBoolean("createDirectory"); }
+
+    public String directoryName() { return json.getString("directoryName"); }
 }
