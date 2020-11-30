@@ -4,6 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ru.redguy.smartdownloader.enums.DataType;
+import ru.redguy.smartdownloader.enums.UnpackType;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,11 +28,23 @@ public class Config {
     }
 
     public DataType getDataType() {
-        switch (json.getInt("type")) {
+        switch (json.getInt("dataType")) {
             case 1:
                 return DataType.InJar;
             case 2:
                 return DataType.OutJar;
+        }
+        return null;
+    }
+
+    public UnpackType getUnpackType() {
+        switch (json.getInt("unpackType")) {
+            case 1:
+                return UnpackType.RunDir;
+            case 2:
+                return UnpackType.RunSubDir;
+            case 3:
+                return UnpackType.FullPath;
         }
         return null;
     }
@@ -51,5 +64,5 @@ public class Config {
 
     public boolean getCreateDirectory() { return json.getBoolean("createDirectory"); }
 
-    public String directoryName() { return json.getString("directoryName"); }
+    public String directory() { return json.getString("directory"); }
 }

@@ -10,10 +10,10 @@ import java.util.List;
 
 public class OutJar {
     List<String> dataPacks;
-    Path pathToSave;
+    File pathToSave;
     public boolean print;
 
-    public OutJar(Path pathToSave, List<String> dataPacks) {
+    public OutJar(File pathToSave, List<String> dataPacks) {
         this.dataPacks = dataPacks;
         this.pathToSave = pathToSave;
     }
@@ -22,7 +22,7 @@ public class OutJar {
         for (String dataPack : dataPacks) {
             FilesUnPackager filesUnPackager = null;
             try {
-                filesUnPackager = new FilesUnPackager(new File(dataPack),new File(pathToSave.toString()));
+                filesUnPackager = new FilesUnPackager(new File(dataPack),pathToSave);
             } catch (FileNotFoundException e) {
                 System.out.println("File not found!");
                 System.exit(-1);

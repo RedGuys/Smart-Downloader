@@ -11,10 +11,10 @@ import java.util.List;
 
 public class InJar {
     List<String> dataPacks;
-    Path pathToSave;
+    File pathToSave;
     public boolean print;
 
-    public InJar(Path pathToSave, List<String> dataPacks) {
+    public InJar(File pathToSave, List<String> dataPacks) {
         this.dataPacks = dataPacks;
         this.pathToSave = pathToSave;
     }
@@ -23,7 +23,7 @@ public class InJar {
         for (String dataPack : dataPacks) {
             FilesUnPackager filesUnPackager = null;
             try {
-                filesUnPackager = new FilesUnPackager(new BufferedInputStream(Main.class.getResourceAsStream("/"+dataPack)),pathToSave.toString());
+                filesUnPackager = new FilesUnPackager(new BufferedInputStream(Main.class.getResourceAsStream("/"+dataPack)),pathToSave.getAbsolutePath());
             } catch (IOException e) {
                 e.printStackTrace();
             }

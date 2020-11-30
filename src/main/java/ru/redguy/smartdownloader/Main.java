@@ -16,16 +16,19 @@ import java.security.CodeSource;
 public class Main {
     public static void main(String[] args) throws URISyntaxException {
         Config config = new Config();
-        Path path;
-        if(args.length == 0) {
-            path = Paths.get("").toAbsolutePath();
-            if(config.getCreateDirectory()) path = Paths.get(path.toString(),config.directoryName());
-        } else {
-            path = Paths.get(args[0]).toAbsolutePath();
+        File path = null;
+        switch (config.getUnpackType()) {
+            case RunDir:
+                path = new File(".");
+                break;
+            case RunSubDir:
+            case FullPath:
+                path = new File(config.directory());
+                if(config.getCreateDirectory()) {
+                    path.mkdirs();
+                }
+                break;
         }
-        try {
-            Files.createDirectories(path);
-        } catch (IOException ignored) {}
         switch (config.getDataType()) {
             case InJar:
                 InJar injar = new InJar(path,config.getDataPacks());
