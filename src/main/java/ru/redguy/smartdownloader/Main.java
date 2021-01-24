@@ -1,5 +1,6 @@
 package ru.redguy.smartdownloader;
 
+import org.apache.commons.io.FileUtils;
 import ru.redguy.smartdownloader.datasources.InJar;
 import ru.redguy.smartdownloader.datasources.OutJar;
 
@@ -14,7 +15,7 @@ import java.nio.file.Paths;
 import java.security.CodeSource;
 
 public class Main {
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) {
         Config config = new Config();
         File path = null;
         switch (config.getUnpackType()) {
@@ -24,6 +25,12 @@ public class Main {
             case RunSubDir:
             case FullPath:
                 path = new File(config.directory());
+                if(config.IsClearBefore()) {
+                    try {
+                        FileUtils.deleteDirectory(path);
+                    } catch (IOException ignored) {
+                    }
+                }
                 if(config.getCreateDirectory()) {
                     path.mkdirs();
                 }
