@@ -32,6 +32,8 @@ public class Config {
                 return DataType.InJar;
             case 2:
                 return DataType.OutJar;
+            case 3:
+                return DataType.Http;
         }
         return null;
     }
