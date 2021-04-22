@@ -3,7 +3,7 @@ package ru.redguy.smartdownloader.utils;
 import java.io.File;
 
 public class FileUtils {
-    static boolean deleteDirectory(File directoryToBeDeleted) {
+    public static boolean deleteDirectory(File directoryToBeDeleted) {
         File[] allContents = directoryToBeDeleted.listFiles();
         if (allContents != null) {
             for (File file : allContents) {

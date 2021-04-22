@@ -1,20 +1,13 @@
 package ru.redguy.smartdownloader;
 
-import org.apache.commons.io.FileUtils;
 import ru.redguy.rednetworker.clients.http.exceptions.HttpProtocolException;
 import ru.redguy.smartdownloader.datasources.Http;
 import ru.redguy.smartdownloader.datasources.InJar;
 import ru.redguy.smartdownloader.datasources.OutJar;
+import ru.redguy.smartdownloader.utils.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
-import java.net.URLDecoder;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.security.CodeSource;
 
 public class Main {
     public static void main(String[] args) throws HttpProtocolException, IOException {
@@ -28,10 +21,7 @@ public class Main {
             case FullPath:
                 path = new File(config.directory());
                 if(config.IsClearBefore()) {
-                    try {
-                        FileUtils.deleteDirectory(path);
-                    } catch (IOException ignored) {
-                    }
+                    FileUtils.deleteDirectory(path);
                 }
                 if(config.getCreateDirectory()) {
                     path.mkdirs();

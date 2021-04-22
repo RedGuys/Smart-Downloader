@@ -4,7 +4,6 @@ import ru.konstanteam.lokpackager.files.FilesUnPackager;
 import ru.redguy.rednetworker.clients.http.ApacheFluentAPI;
 import ru.redguy.rednetworker.clients.http.ApacheFluentAPIResponse;
 import ru.redguy.rednetworker.clients.http.exceptions.HttpProtocolException;
-import ru.redguy.smartdownloader.Main;
 
 import java.io.BufferedInputStream;
 import java.io.File;

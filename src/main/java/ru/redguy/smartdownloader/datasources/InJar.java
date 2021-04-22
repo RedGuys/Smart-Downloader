@@ -6,7 +6,6 @@ import ru.redguy.smartdownloader.Main;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 public class InJar {
