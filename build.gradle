@@ -10,7 +10,7 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven {
-        url "https://mvn.redguy.ru/repository/maven-releases/"
+        url "https://repo.redguy.ru/repository/maven-releases/"
     }
 }
 
