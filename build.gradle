@@ -18,7 +18,7 @@ dependencies {
     compile files("libs/LokPackager.jar")
     compile group: 'org.json', name: 'json', version: '20200518'
     compile group: 'commons-io', name: 'commons-io', version: '2.7'
-    implementation 'ru.redguy.rednetworker.clients.http:apachefluentapi:1.0.6'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.9.1'
 }
 
 jar {

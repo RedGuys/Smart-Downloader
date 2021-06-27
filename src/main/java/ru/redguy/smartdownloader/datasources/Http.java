@@ -1,9 +1,8 @@
 package ru.redguy.smartdownloader.datasources;
 
+import okhttp3.*;
+import okhttp3.Request.Builder;
 import ru.konstanteam.lokpackager.files.FilesUnPackager;
-import ru.redguy.rednetworker.clients.http.ApacheFluentAPI;
-import ru.redguy.rednetworker.clients.http.ApacheFluentAPIResponse;
-import ru.redguy.rednetworker.clients.http.exceptions.HttpProtocolException;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -20,10 +19,12 @@ public class Http {
         this.pathToSave = pathToSave;
     }
 
-    public boolean unpack() throws HttpProtocolException, IOException {
+    public boolean unpack() throws IOException {
+        OkHttpClient client = new OkHttpClient();
         for (String dataPack : dataPacks) {
-            ApacheFluentAPIResponse response = new ApacheFluentAPI().url(dataPack).execute();
-            FilesUnPackager filesUnPackager = new FilesUnPackager(new BufferedInputStream(response.getInputStream()),pathToSave.getAbsolutePath());
+            Request request = new Request.Builder().url(dataPack).build();
+            Response response = client.newCall(request).execute();
+            FilesUnPackager filesUnPackager = new FilesUnPackager(new BufferedInputStream(response.body().byteStream()),pathToSave.getAbsolutePath());
             if(print) System.out.println(new File(dataPack).getName());
             try {
                 filesUnPackager.unpack();

@@ -1,6 +1,5 @@
 package ru.redguy.smartdownloader;
 
-import ru.redguy.rednetworker.clients.http.exceptions.HttpProtocolException;
 import ru.redguy.smartdownloader.datasources.Http;
 import ru.redguy.smartdownloader.datasources.InJar;
 import ru.redguy.smartdownloader.datasources.OutJar;
@@ -10,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws HttpProtocolException, IOException {
+    public static void main(String[] args) throws IOException {
         Config config = new Config();
         File path = null;
         switch (config.getUnpackType()) {
